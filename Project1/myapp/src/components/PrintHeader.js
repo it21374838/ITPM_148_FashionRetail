@@ -26,12 +26,12 @@ const PrintHeader = () => {
 
   return (
     <>
-      <h1 style={topicStyle}>Happy Paws Pet CLINIC</h1>
+      <h1 style={topicStyle}>LYDA Fashion</h1>
       <div className="row" style={{marginBottom: "15px"}}> 
         <div className="col1"style={{ textAlign: "start" }}>
           <img
             style={imgStyle}
-            src="../img/appLogo.png"
+            src="../img/Fashionlogo.jpeg"
             className="app-logo"
             alt="home"
           />

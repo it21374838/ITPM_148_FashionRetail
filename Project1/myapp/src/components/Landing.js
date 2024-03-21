@@ -21,10 +21,10 @@ class Landing extends Component {
     return (
       <Carousel>
    <div style={{ backgroundColor: '#f2f2f2', padding: '20px' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Welcome to Happy Paws!</h2>
+          <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Welcome To LYDA Fashion!</h2>
           {isParagraphVisible && (
             <p style={{ textAlign: 'center', fontSize: '18px', color: 'black', fontStyle: 'italic' }}>
-              Working with animals, despite the regular contretemps, adds up to a rewarding and fulfilling life, which is confirmed by the fact that most vets seem to be happy men.
+            If you love something, wear it all the time... Find things that suit you. That's how you look extraordinary !
             </p>
           )}
         </div>
@@ -32,7 +32,7 @@ class Landing extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="../img/HomeSlide1.png"
+            src="../img/Homepage1.jpeg"
             alt="First slide"
           />
        
@@ -40,7 +40,7 @@ class Landing extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="../img/HomeSlide3.jpg"
+            src="../img/Homepage2.jpeg"
             alt="Second slide"
           />
           
@@ -48,7 +48,7 @@ class Landing extends Component {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="../img/HomeSlide2.jpg"
+            src="../img/Homepage3.jpeg"
             alt="Third slide"
           />
         
