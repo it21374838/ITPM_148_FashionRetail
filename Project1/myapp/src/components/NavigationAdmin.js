@@ -12,18 +12,14 @@ class Navbar3 extends Component {
 
     const userLink = (
       <ul className="nav-tabs sidebar">
-        <ul className="nav-tabs3">
+        <ul className="nav-tabs3"> 
           <li className="nav-item2">
             <Link to="/regUser" className="nav-link">
               <h6>Registered Users</h6>
             </Link>
           </li>
 
-          <li className="nav-item2">
-            <Link to="/animals" className="nav-link">
-              <h6>Animals</h6>
-            </Link>
-          </li>
+          
 
           <li className="nav-item2">
             <Link to="/payments" className="nav-link">
@@ -43,35 +39,8 @@ class Navbar3 extends Component {
             </Link>
           </li>
 
-          <li className="nav-item2">
-            <Link to="/admissions" className="nav-link">
-              <h6>Admissions</h6>
-            </Link>
-          </li>
+          
 
-          <li className="nav-item2">
-            <Link to="/shelters" className="nav-link">
-              <h6>Shelters</h6>
-            </Link>
-          </li>
-
-          <li className="nav-item2">
-            <Link to="/prescriptions" className="nav-link">
-              <h6>Prescriptions</h6>
-            </Link>
-          </li>
-
-          <li className="nav-item2">
-            <Link to="/vaccines" className="nav-link">
-              <h6>Vaccines</h6>
-            </Link>
-          </li>
-
-          <li className="nav-item2">
-            <Link to="/appointment" className="nav-link">
-              <h6>Appointments</h6>
-            </Link>
-          </li>
         </ul>
 
         <ul className="nav-tabs4">
