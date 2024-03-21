@@ -317,13 +317,7 @@ const UsersTableRow = (props) => {
       <td>{userState.email}</td>
       <td style={{ textAlign: "center" }}>{userState.date.substring(0, 10)}</td>
       <td>
-        <button 
-          type="submit"
-          className="addanimal"
-          onClick={() => addAnimal(userState._id)}
-        >
-          <Link className="nav-link">Add Animal</Link>
-        </button>
+      
       </td>
       <td>
         <button
