@@ -2,7 +2,7 @@
 
 # Project Name - Fashion Retail Management System
 
-### Member 1 - K.P.Y.N Rathnayaka ()
+### Member 1 - K.P.Y.N Rathnayaka (IT21031748)
 ### Member 2 - Ellewela A.V.H (IT21361272)
 ### Member 6 - Silva K.H.L.D (IT21374838)
 ### Member 7 - Dissanayake D.T.D (IT21165948)
