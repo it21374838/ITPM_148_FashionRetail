@@ -229,10 +229,7 @@ const InsightsService = () => {
               <h2>{countEmp}</h2>
             </Col>
 
-            <Col className="insights-col">
-              <h5>Registered Animals</h5>
-              <h2>{countAnimal}</h2>
-            </Col>
+            
 
             <Col className="insights-col">
               <h5>Registered Users</h5>
@@ -266,10 +263,7 @@ const InsightsService = () => {
               </ResponsiveContainer>
             </Col>
 
-            <Col className="insights-col chart-next">
-              <h5>Inpatients</h5>
-              <h2>{countInpatient}</h2>
-            </Col>
+            
 
             <Col className="insights-col chart-next ">
               <h5>All Items</h5>
@@ -289,15 +283,9 @@ const InsightsService = () => {
             </Col>
           </Row>
           <Row>
-            <Col className="insights-col">
-              <h5>Ongoing Appointments</h5>
-              <h2>{countAppointment}</h2>
-            </Col>
+            
 
-            <Col className="insights-col">
-              <h5>Vaccine</h5>
-              <h2>{countEmp}</h2>
-            </Col>
+            
           </Row>
 
        

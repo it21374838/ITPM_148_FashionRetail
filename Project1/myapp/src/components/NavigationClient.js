@@ -58,11 +58,7 @@ class Navbar2 extends Component {
                     </Link>
                 </li>
 
-                <li className="nav-item2" >
-                    <Link to="/CusAppointment" className="nav-link" > 
-                        <h6>Appointments</h6>
-                    </Link>
-                </li>
+                
 
                 <li className="nav-item2" >
                     <Link to="/contact" className="nav-link" > 
