@@ -1,56 +1,79 @@
-import React, { Component } from 'react'
-import { register } from './UserFunction'
+import React, { Component } from 'react';
+import { register } from './UserFunction';
 import { withRouter } from './withRouter';
-class Register extends Component {
 
-    constructor(){
+class Register extends Component {
+    constructor() {
         super();
         this.state = {
             first_name: '',
             last_name: '',
             email: '',
             password: '',
-        }
+            errors: {}
+        };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange(e){
-        this.setState({[e.target.name]: e.target.value})
+    onChange(e) {
+        const { name, value } = e.target;
+        let errors = { ...this.state.errors };
+
+        if (name === 'first_name' || name === 'last_name') {
+            if (!/^[a-zA-Z]+$/.test(value)) {
+                errors[name] = 'Only alphabets are allowed';
+            } else {
+                delete errors[name];
+            }
+        } else if (name === 'email') {
+            if (!/\S+@\S+\.\S+/.test(value)) {
+                errors[name] = 'Invalid email address';
+            } else {
+                delete errors[name];
+            }
+        } else if (name === 'password') {
+            if (value.length < 6) {
+                errors[name] = 'Password must be at least 6 characters long';
+            } else {
+                delete errors[name];
+            }
+        }
+
+        this.setState({ [name]: value, errors });
     }
 
     onSubmit(e) {
         e.preventDefault();
-      
-        const user = {
-          first_name: this.state.first_name,
-          last_name: this.state.last_name,
-          email: this.state.email,
-          password: this.state.password
-        };
-      
+
+        const { first_name, last_name, email, password, errors } = this.state;
+        if (!first_name || !last_name || !email || !password || Object.keys(errors).length > 0) {
+            alert('Please fill in all fields correctly.');
+            return;
+        }
+
+        const user = { first_name, last_name, email, password };
+
         register(user).then(res => {
-          if (res.registered) {
-            this.props.navigate('/login');
-            window.alert("Registered now");
-          } else {
-            window.alert("Register failed");
-          }
+            if (res.registered) {
+                this.props.navigate('/login');
+                window.alert("Registered successfully");
+            } else {
+                window.alert("Registration failed");
+            }
         });
-      }
-      
+    }
 
+    render() {
+        const { first_name, last_name, email, password, errors } = this.state;
 
-  render() {
-    return (
-      <div className='container'>
-        <h2>
-            <div className='row'>
-                <div className='col-md-6 mt-5 mx-auto'>
-                    <form noValidate onSubmit={this.onSubmit}>
-                        <h1 className='h3 mb-3 font-weight-normal'>
-                            <p align="center">Form</p>
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-md-6 mt-5 mx-auto'>
+                        <form noValidate onSubmit={this.onSubmit}>
+                            <h1 className='h3 mb-3 font-weight-normal' align="center">Register Form</h1>
 
                             <div className='form-group'>
                                 <label htmlFor='first_name'>First Name</label>
@@ -59,10 +82,11 @@ class Register extends Component {
                                     className='form-control'
                                     name='first_name'
                                     placeholder='Enter First Name'
-                                    value={this.state.first_name}
+                                    value={first_name}
                                     onChange={this.onChange}
                                     required
-                                    ></input>
+                                />
+                                {errors.first_name && <div className="alert alert-danger">{errors.first_name}</div>}
                             </div>
 
                             <div className='form-group'>
@@ -72,10 +96,11 @@ class Register extends Component {
                                     className='form-control'
                                     name='last_name'
                                     placeholder='Enter Last Name'
-                                    required
-                                    value={this.state.last_name}
+                                    value={last_name}
                                     onChange={this.onChange}
-                                    ></input>
+                                    required
+                                />
+                                {errors.last_name && <div className="alert alert-danger">{errors.last_name}</div>}
                             </div>
 
                             <div className='form-group'>
@@ -84,11 +109,12 @@ class Register extends Component {
                                     type="email"
                                     className='form-control'
                                     name='email'
-                                    placeholder='Enter email'
-                                    required
-                                    value={this.state.email}
+                                    placeholder='Enter Email'
+                                    value={email}
                                     onChange={this.onChange}
-                                    ></input>
+                                    required
+                                />
+                                {errors.email && <div className="alert alert-danger">{errors.email}</div>}
                             </div>
 
                             <div className='form-group'>
@@ -97,25 +123,21 @@ class Register extends Component {
                                     type="password"
                                     className='form-control'
                                     name='password'
-                                    placeholder='Enter password'
-                                    required
-                                    value={this.state.password}
+                                    placeholder='Enter Password'
+                                    value={password}
                                     onChange={this.onChange}
-                                    ></input>
+                                    required
+                                />
+                                {errors.password && <div className="alert alert-danger">{errors.password}</div>}
                             </div>
 
                             <button className='btn btn-lg btn-primary btn-block'>Register</button>
-
-                        </h1>
-                    </form>
-                    
+                        </form>
+                    </div>
                 </div>
             </div>
-        </h2>
-        
-      </div>
-    )
-  }
+        );
+    }
 }
 
 export default withRouter(Register);
