@@ -2,59 +2,94 @@ import React, { Component } from 'react';
 import { login } from './UserFunction';
 import { withRouter } from './withRouter';
 
-
 class Login extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            email: ``,
-            password: ``
-        }
+            email: '',
+            password: '',
+            errors: {}
+        };
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange(e){
-        this.setState({[e.target.name]: e.target.value})
-    }
+    validateForm() {
+        let errors = {};
+        let formIsValid = true;
 
-    onSubmit(e){ 
-        e.preventDefault ();
-
-        alert(`this entered email is : ${this.state.email}`)
-        const user ={
-            email: this.state.email,
-            password: this.state.password            
+        // Email validation
+        if (!this.state.email) {
+            formIsValid = false;
+            errors["email"] = "*Please enter your email.";
         }
 
-        
-        login(user)
-        .then(res => {
-          if (res.success) {
-            localStorage.setItem('usertoken', res.token);
-            console.log('Token stored in local storage:', localStorage.usertoken);
-            this.props.navigate('/profile');
-          } else {
-            alert(res.error);            
-          }
-        }) 
-        .catch(err => {
-          console.log(err);
+        if (typeof this.state.email !== "undefined") {
+            var pattern = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+            if (!pattern.test(this.state.email)) {
+                formIsValid = false;
+                errors["email"] = "*Please enter valid email.";
+            }
+        }
+
+        // Password validation
+        if (!this.state.password) {
+            formIsValid = false;
+            errors["password"] = "*Please enter your password.";
+        }
+
+        if (typeof this.state.password !== "undefined") {
+            if (this.state.password.length < 6) {
+                formIsValid = false;
+                errors["password"] = "*Please enter at least 6 characters.";
+            }
+        }
+
+        this.setState({
+            errors: errors
         });
-      
+
+        return formIsValid;
     }
 
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
 
-  render() {
-    return (
-      <div className='container'>
-        <div>
-            <div className='row'>
-                <div className='col-md-6 mt-5 mx-auto'>
-                    <form noValidate onSubmit={this.onSubmit}>
-                        <div className='h3 mb-3 font-weight-normal'>
-                            <p align="center">Login</p>
+    onSubmit(e) {
+        e.preventDefault();
+
+        if (this.validateForm()) {
+            const user = {
+                email: this.state.email,
+                password: this.state.password
+            };
+
+            login(user)
+            .then(res => {
+              if (res.success) {
+                localStorage.setItem('usertoken', res.token);
+                console.log('Token stored in local storage:', localStorage.usertoken);
+                this.props.navigate('/profile');
+              } else {
+                alert(res.error);            
+              }
+            }) 
+            .catch(err => {
+              console.log(err);
+            });
+        }
+    }
+
+    render() {
+        const { errors } = this.state;
+        return (
+            <div className='container'>
+                <div className='row'>
+                    <div className='col-md-6 mt-5 mx-auto'>
+                        <form noValidate onSubmit={this.onSubmit}>
+                            <h3 className='mb-3 font-weight-normal' align="center">Login</h3>
                             <div className='form-group'>
                                 <label htmlFor='email'>Email</label>
                                 <input
@@ -64,7 +99,8 @@ class Login extends Component {
                                     placeholder='Enter email'
                                     value={this.state.email}
                                     onChange={this.onChange}
-                                    ></input>
+                                />
+                                <div className="text-danger">{errors.email}</div>
                             </div>
 
                             <div className='form-group'>
@@ -76,20 +112,17 @@ class Login extends Component {
                                     placeholder='Enter password'
                                     value={this.state.password}
                                     onChange={this.onChange}
-                                    ></input>
+                                />
+                                <div className="text-danger">{errors.password}</div>
                             </div>
 
                             <button type='submit' className='btn btn-lg btn-primary btn-block'>Sign In</button>
-
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-      </div>
-    )
-  }
+        );
+    }
 }
 
 export default withRouter(Login);
