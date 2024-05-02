@@ -12,4 +12,3 @@ The fashion retail management system is a comprehensive software solution design
 
 #### Technologies used  - MERN Stack
 
-
