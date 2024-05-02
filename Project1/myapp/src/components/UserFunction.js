@@ -10,6 +10,7 @@ export const register = newUser => {
         privilege: "USER"
       })
       .then(res => {
+
         if (res.data && res.data.registered) {
           window.alert("This email is already registered. Please log in or use a different email.");
         } else {

@@ -43,8 +43,9 @@ class Register extends Component {
 
         this.setState({ [name]: value, errors });
     }
-
+    
     onSubmit(e) {
+    console.log("yash")
         e.preventDefault();
 
         const { first_name, last_name, email, password, errors } = this.state;
@@ -54,7 +55,7 @@ class Register extends Component {
         }
 
         const user = { first_name, last_name, email, password };
-
+        console.log (user)
         register(user).then(res => {
             if (res.registered) {
                 this.props.navigate('/login');

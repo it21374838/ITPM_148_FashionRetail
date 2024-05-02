@@ -100,7 +100,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 //db connection
 const mongoose = require('mongoose');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
 app.use(cors());
