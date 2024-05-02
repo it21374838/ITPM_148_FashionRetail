@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import ChatbotPopup from "./ChatBot"
 
 class Landing extends Component {
   constructor(props) {
@@ -19,12 +20,12 @@ class Landing extends Component {
   render() {
     const { isParagraphVisible } = this.state;
     return (
-      <Carousel>
-   <div style={{ backgroundColor: '#f2f2f2', padding: '20px' }}>
+      <><Carousel>
+        <div style={{ backgroundColor: '#f2f2f2', padding: '20px' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Welcome To LYDA Fashion!</h2>
           {isParagraphVisible && (
             <p style={{ textAlign: 'center', fontSize: '18px', color: 'black', fontStyle: 'italic' }}>
-            If you love something, wear it all the time... Find things that suit you. That's how you look extraordinary !
+              If you love something, wear it all the time... Find things that suit you. That's how you look extraordinary !
             </p>
           )}
         </div>
@@ -33,28 +34,27 @@ class Landing extends Component {
           <img
             className="d-block w-100"
             src="../img/Homepage1.jpeg"
-            alt="First slide"
-          />
-       
+            alt="First slide" />
+
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
             src="../img/Homepage2.jpeg"
-            alt="Second slide"
-          />
-          
+            alt="Second slide" />
+
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
             src="../img/Homepage3.jpeg"
-            alt="Third slide"
-          />
-        
+            alt="Third slide" />
+
         </Carousel.Item>
 
-      </Carousel>
+      </Carousel><div>
+          <ChatbotPopup />
+        </div></>
       
       
     );
