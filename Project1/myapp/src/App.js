@@ -11,7 +11,7 @@ import Navbar3 from './components/NavigationAdmin'
 import ServiceList from './components/ServicesList'
 import UserList from './components/UserList';
 import EmployeeList from './components/EmployeeList'
-
+import Location from './components/Trackingpage'
 import EmployeeLoginList from './components/EmployeeLoginList'
 
 import StoreCard from './components/StoreCard';
@@ -77,7 +77,7 @@ class App extends Component {
           
             <Route path = "/category" element={<CategoryList/>}/>
             <Route path = "/supplier" element={<Suppliers/>}/>
-           
+            <Route path = "/location" element={<Location/>}/>
           
             <Route path = "/orderList" element={<OrderList/>}/>
             <Route path = "/placedOrder" element={<PlacedOrder/>}/>

@@ -38,6 +38,12 @@ class Navbar2 extends Component {
                         <h6>Contact Us</h6>
                     </Link>
                 </li>
+                
+                <li className="nav-item2" >
+                    <Link to="/location" className="nav-link" > 
+                        <h6>Add Location</h6>
+                    </Link>
+                </li>
 
             </ul>
             </div>

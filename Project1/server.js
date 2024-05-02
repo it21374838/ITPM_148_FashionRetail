@@ -140,7 +140,8 @@ app.use('/users', Users);
 var serviceRoutes = require('./routes/Service');
 app.use('/service', serviceRoutes);
 
-
+const locationRoutes = require('./routes/locationRoutes');
+app.use('/api', locationRoutes);
 
 var supplierRoutes = require('./routes/Supplier');
 app.use('/supplier',supplierRoutes);
