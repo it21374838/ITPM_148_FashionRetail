@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
-import "../components/CSS/ChatbotPopup.css"
+import "../components/CSS/ChatbotPopup.css" // Importing CSS file
 
 const MODEL_NAME = 'gemini-1.0-pro-001';
-const API_KEY = 'AIzaSyBrMUcJ3ygJar7RJvjegkAjIIm1n41LcoM';// API Key eka danna
+const API_KEY = 'AIzaSyBrMUcJ3ygJar7RJvjegkAjIIm1n41LcoM';
+
 const ChatbotPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -77,11 +78,23 @@ const ChatbotPopup = () => {
         });
   
         const response = result.response;
-        setMessages([
-          ...messages,
-          { sender: 'user', text: inputValue },
-          { sender: 'bot', text: response.text() },
-        ]);
+
+        // Check if the response is fashion-related
+        if (isFashionRelated(response.text())) {
+          // If fashion-related, display the response to the user
+          setMessages([
+            ...messages,
+            { sender: 'user', text: inputValue },
+            { sender: 'bot', text: response.text() },
+          ]);
+        } else {
+          // If not fashion-related, display a message indicating that the response is not relevant
+          setMessages([
+            ...messages,
+            { sender: 'user', text: inputValue },
+            { sender: 'bot', text: 'OH! Sorry, I can only provide fashion-related information.' },
+          ]);
+        }
       } catch (error) {
         console.error('Error:', error);
         setMessages([
@@ -94,6 +107,29 @@ const ChatbotPopup = () => {
       setIsThinking(false);
     }
   };
+
+  
+// Function to check if a response is fashion-related
+function isFashionRelated(response) {
+  // Convert the response to lowercase for case-insensitive matching
+  const lowercaseResponse = response.toLowerCase();
+  
+  // Keywords related to fashion
+  const fashionKeywords = ['fashion', 'clothing', 'style', 'dress', 'outfit', 'apparel', 'wardrobe', 'accessories', 'trend'];
+  
+  // Keywords related to events
+  const eventKeywords = ['party', 'wedding', 'formal event', 'casual event', 'cocktail party', 'prom', 'red carpet'];
+  
+  // Check if the response contains any fashion-related keywords
+  const isFashion = fashionKeywords.some(keyword => lowercaseResponse.includes(keyword));
+
+  // Check if the response contains any event-related keywords
+  const isEvent = eventKeywords.some(keyword => lowercaseResponse.includes(keyword));
+
+  // Return true if the response is fashion-related or event-related
+  return isFashion || isEvent;
+}
+
 
   return (
     <div className={`chatbot-popup ${isOpen ? 'open' : ''}`}>

@@ -40,7 +40,7 @@ export default function App() {
                 Company name
               </h6>
               <p>
-              WE KEEP THEM HAPPY ANY TIME !
+              KEEP FASHION KEEP HAPPY !
                
               </p>
             </MDBCol>
@@ -49,17 +49,17 @@ export default function App() {
               <h6 className='text-uppercase fw-bold mb-4'>Products</h6>
               <p>
                 <a href='https://embarkpassion.com/' className='text-reset'>
-                 Embark
+                 EMBARK
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  The AWPA
+                  ODEL
                 </a>
               </p>
               <p>
                 <a href='#!' className='text-reset'>
-                  Animal SOS
+                  SOFTLOGIC
                 </a>
               </p>
             </MDBCol>
