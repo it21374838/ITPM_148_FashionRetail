@@ -142,7 +142,7 @@ function EmployeeLoginList(props) {
   }, []);
 
   //upload file
-  const [fileName, setFileName] = useState("");
+  const [setFileName] = useState("");
   const [file, setFile] = useState(null);
 
   const handleFileChange = (e) => {

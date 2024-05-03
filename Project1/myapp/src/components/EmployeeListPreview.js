@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import Button from "react-bootstrap/Button";
 import { withRouter } from './withRouter';

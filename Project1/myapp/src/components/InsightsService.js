@@ -50,7 +50,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countAdmission, setCountAdmission] = useState(0);
+  const [setCountAdmission] = useState(0);
 
   useEffect(() => {
     axios
@@ -64,7 +64,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countAnimal, setCountAnimal] = useState(0);
+  const [setCountAnimal] = useState(0);
 
   useEffect(() => {
     axios
@@ -78,7 +78,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countAppointment, setCountAppointment] = useState(0);
+  const [setCountAppointment] = useState(0);
 
   useEffect(() => {
     axios
@@ -92,7 +92,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countAccounts, setCountAccounts] = useState(0);
+  const [setCountAccounts] = useState(0);
 
   useEffect(() => {
     axios
@@ -106,7 +106,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countInpatient, setCountInpatient] = useState(0);
+  const [setCountInpatient] = useState(0);
 
   useEffect(() => {
     axios
@@ -148,7 +148,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countService, setCountService] = useState(0);
+  const [setCountService] = useState(0);
 
   useEffect(() => {
     axios
@@ -162,7 +162,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countShelter, setCountShelter] = useState(0);
+  const [setCountShelter] = useState(0);
 
   useEffect(() => {
     axios
@@ -204,7 +204,7 @@ const InsightsService = () => {
       });
   }, []);
 
-  const [countVaccine, setCountVaccine] = useState(0);
+  const [setCountVaccine] = useState(0);
 
   useEffect(() => {
     axios

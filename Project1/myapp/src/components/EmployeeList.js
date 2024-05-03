@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component, useRef } from "react";
+import React, { useState, useEffect, } from "react";
 import axios from "axios";
 import EmployeeTableRow from "./EmployeeTableRow";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ import { Alert } from "react-bootstrap";
 
 function EmployeeList(props) {
   //Form validation
-  const [errors, setErrors, setVal] = useState({});
+  const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     let isValid = true;

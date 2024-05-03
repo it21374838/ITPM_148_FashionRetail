@@ -52,11 +52,7 @@ const UsersTableRow = (props) => {
 
   const [updated, setUpdated] = useState({});
 
-  const addAnimal = (id) => {
-    console.log(userState);
-    console.log(id);
-    handleShowModal();
-  };
+
 
   const handleChangeAnimal = (e) => {
     const { name, value } = e.target;
