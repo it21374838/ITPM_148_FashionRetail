@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
+import "../components/CSS/ChatbotPopup.css"
 
 const MODEL_NAME = 'gemini-1.0-pro-001';
 const API_KEY = 'AIzaSyBrMUcJ3ygJar7RJvjegkAjIIm1n41LcoM';// API Key eka danna
-
 const ChatbotPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -34,9 +34,7 @@ const ChatbotPopup = () => {
 
   const handleSendMessage = async () => {
     if (inputValue.trim() && genAI && model) {
-      // Clear the input field
       setInputValue('');
-    
       setMessages([...messages, { sender: 'user', text: inputValue }]);
       setIsThinking(true);
 
@@ -68,12 +66,12 @@ const ChatbotPopup = () => {
   
       try {
         const result = await model.generateContent({
-            contents: [
-                {
-                  role: 'user',
-                  parts: [{ text: inputValue }],
-                },
-              ],
+          contents: [
+            {
+              role: 'user',
+              parts: [{ text: inputValue }],
+            },
+          ],
           generationConfig,
           safetySettings,
         });
@@ -89,103 +87,55 @@ const ChatbotPopup = () => {
         setMessages([
           ...messages,
           { sender: 'user', text: inputValue },
-          { sender: 'bot', text: 'Sorry, something went wrong. Please try again.' },
+          { sender: 'bot', text: 'Sorry, I encountered an error. Please try again.' },
         ]);
       }
       
       setIsThinking(false);
-      
     }
-  
   };
 
-  
-
   return (
-    <div className="fixed bottom-4 right-4">
+    <div className={`chatbot-popup ${isOpen ? 'open' : ''}`}>
       <button
         onClick={toggleChatbot}
-        className="bg-indigo-600 text-white rounded-full p-3 hover:bg-indigo-700 transition-colors duration-300"
+        className="chatbot-toggle-button"
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+        {isOpen ? 'Close Chat' : 'Open Chat'}
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-16 right-4 bg-white rounded-lg shadow-lg p-6 max-w-md">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold">Chatbot</h2>
+        <div className="chatbot-window">
+          <div className="chatbot-header">
+            <h2 className="chatbot-title">Chatbot</h2>
             <button
               onClick={toggleChatbot}
-              className="text-gray-500 hover:text-gray-700"
+              className="chatbot-close-button"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              Close
             </button>
           </div>
-          <div className="bg-gray-100 rounded-lg p-4 max-h-96 overflow-y-auto">
+
+          <div className="chatbot-messages">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`flex ${
-                  message.sender === 'user' ? 'justify-end' : 'justify-start'
-                } mb-2`}
+                className={`chat-message ${message.sender}`}
               >
-                <div
-                  className={`rounded-lg px-4 py-2 max-w-xs ${
-                    message.sender === 'user'
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-gray-300 text-gray-800'
-                  }`}
-                >
-                  {message.text}
-                </div>
+                {message.text}
               </div>
             ))}
-            {isThinking && (
-                <div class="flex gap-2">
-                <span className="loading loading-dots loading-sm"></span>
-                </div>
-            )}
+            {isThinking && <div className="loading-indicator">Thinking...</div>}
           </div>
-          <div className="mt-4 flex">
+
+          <div className="chatbot-input">
             <input
               type="text"
               placeholder="Type your message..."
               value={inputValue}
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
-            <button
-              onClick={handleSendMessage}
-              className="ml-2 bg-indigo-600 text-white rounded-lg px-4 py-2 hover:bg-indigo-700 transition-colors duration-300"
-            >
-              Send
-            </button>
+            <button onClick={handleSendMessage}>Send</button>
           </div>
         </div>
       )}

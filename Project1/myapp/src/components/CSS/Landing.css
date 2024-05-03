@@ -1,0 +1,36 @@
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .landing-carousel {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  
+  .carousel-image img {
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .chatbot-container {
+    width: 80%;
+    max-width: 600px; /* Limit the chatbot popup width */
+  }
+  
+  .welcome-message {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-message h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .welcome-message p {
+    font-size: 18px;
+    color: #333;
+  }
+  

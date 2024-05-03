@@ -1,0 +1,98 @@
+/* Chatbot Popup Styling */
+
+.chatbot-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .chatbot-toggle-button {
+    background-color: #2b2c2b; /* Change button background color to green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .chatbot-toggle-button.open {
+    background-color: #ccc; /* Change button background color to gray when chat is open */
+  }
+  
+  .chatbot-window {
+    background-color: #f0f0f0; /* Change window background color to light gray */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+  }
+  
+  .chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .chatbot-title {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .chatbot-close-button {
+    background: none;
+    border: 1px solid #ccc; /* Add border around close button */
+    color: #888;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px 16px; /* Increase padding for better clickability */
+    border-radius: 5px;
+  }
+  
+  .chatbot-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  
+  .chat-message {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .chat-message.user {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .chat-message.bot {
+    background-color: #fff; /* Change bot message background color to white */
+    color: #333; /* Change bot message text color to dark gray */
+  }
+  
+  .chatbot-input {
+    display: flex;
+    border-top: 1px solid #ccc; /* Add border at the top of input field */
+    padding-top: 10px; /* Add padding at the top of input field */
+  }
+  
+  .chatbot-input input[type="text"] {
+    flex: 1;
+    border: 1px solid #ccc; /* Add border around input field */
+    border-radius: 5px;
+    padding: 8px; /* Increase padding for better appearance */
+    margin-right: 10px; /* Add margin between input field and send button */
+  }
+  
+  .chatbot-input button {
+    background-color: #007bff; /* Change send button background color to blue */
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Increase padding for better clickability */
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
