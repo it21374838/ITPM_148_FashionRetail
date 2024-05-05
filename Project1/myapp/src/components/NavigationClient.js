@@ -72,6 +72,13 @@ class Navbar2 extends Component {
                     </Link>
                 </li>
 
+                <li className="nav-item2" >
+                    <Link to="/location" className="nav-link">
+                        <h6>Track Here</h6>
+                    </Link>
+                </li>
+
+
             </ul>
 
 

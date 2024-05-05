@@ -154,7 +154,7 @@ const Addlocationdetails = () => {
   });
 
   const locations = [
-    { name: "Kaduwela", coordinates: "6.929122107099494, 79.9827447585531" },
+    { name: "Kaduwela", coordinates: ".6929122107099494, 79.9827447585531" },
     { name: "Koswaththa", coordinates: "6.907763319814276, 79.9292102953063" },
     { name: "Pothuhera", coordinates: "7.419931760112256, 80.3282878007621" },
     { name: "Kurunegala", coordinates: "7.485868240115851, 80.36430279599983" },
